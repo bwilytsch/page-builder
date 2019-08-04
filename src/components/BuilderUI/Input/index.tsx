@@ -17,7 +17,14 @@ export interface DefaultProps {
 }
 
 const Input: FC<Props> = props => {
-  return <input onChange={props.onChange} value={props.value} {...props} />;
+  return (
+    <input
+      className="input"
+      onChange={props.onChange}
+      value={props.value}
+      {...props}
+    />
+  );
 };
 
 const defaultProps: DefaultProps = {

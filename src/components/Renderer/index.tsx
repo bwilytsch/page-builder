@@ -4,11 +4,14 @@ import Page from "../../core/Page";
 import Builder from "../../core/Builder";
 import BuilderContext from "../../context/BuilderContext";
 
-import ExamplePage from "../../pages/ExamplePage";
+// import ExamplePage from "../../pages/ExamplePage";
+import BlankPage from "../../pages/BlankPage";
 import Loader from "../../components/BuilderUI/Loader";
 
 import "./Renderer.scss";
 import Modal from "../BuilderUI/Modal";
+import Controls from "../BuilderUI/Controls";
+import { TweenMax } from "gsap";
 
 const Renderer: React.FunctionComponent = props => {
   const [isLoading, setLoadingState] = useState(true);
@@ -18,9 +21,14 @@ const Renderer: React.FunctionComponent = props => {
   } = useContext(BuilderContext);
 
   useEffect(() => {
-    Builder.loadPage(ExamplePage).then(page => {
-      dispatch({ type: "LOAD_PAGE", payload: page });
-      setLoadingState(false);
+    Builder.loadPage(BlankPage).then(page => {
+      TweenMax.to(".logo-container", 0.48, {
+        opacity: 0,
+        onComplete: () => {
+          dispatch({ type: "LOAD_PAGE", payload: page });
+          setLoadingState(false);
+        }
+      });
     });
   }, [page, dispatch, isLoading]);
 
@@ -31,6 +39,7 @@ const Renderer: React.FunctionComponent = props => {
       ) : page instanceof Page ? (
         <>
           <PageComponent {...page} />
+          <Controls />
           {modal.isOpen ? <Modal /> : null}
         </>
       ) : null}

@@ -34,7 +34,7 @@ const loadPage = (page: Page): Promise<Page> => {
     // Fake delay
     setTimeout(() => {
       resolve(currentPage);
-    }, 1000);
+    }, 2000);
   });
 };
 const addText = (txt?: string): void => {

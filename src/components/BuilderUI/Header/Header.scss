@@ -1,9 +1,11 @@
 @import "../../../styles/colors";
 @import "../../../styles/animation";
 
+$size: 64px;
+
 .header-hitbox {
   width: 100%;
-  height: 48px;
+  height: $size;
   position: fixed;
   top: 0;
   left: 0;
@@ -20,8 +22,8 @@
     text-align: center;
     color: white;
     width: 100%;
-    height: 48px;
-    line-height: 48px;
+    height: $size;
+    line-height: $size;
     background-color: $fnatic-dark;
     border-bottom: 4px solid $fnatic-yellow;
     transform: translate(0, -24px);

@@ -1,0 +1,65 @@
+@import "../../../styles/colors";
+
+$size: 48px;
+
+.builder-ui-controls {
+  width: $size;
+  height: $size;
+  border-radius: $size / 2;
+  background: $fnatic-yellow;
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  .hamburger {
+    padding: 12px;
+
+    &-box {
+      width: 24px;
+    }
+
+    &-inner {
+      width: 24px;
+      height: 3px;
+      &::before {
+        width: 24px;
+        top: -8px;
+        height: 3px;
+      }
+
+      &::after {
+        width: 24px;
+        bottom: -8px;
+        height: 3px;
+      }
+    }
+  }
+}
+
+.controls-tooltip {
+  display: flex;
+  position: absolute;
+  top: -140%;
+  left: -100%;
+  opacity: 0;
+  transform: translate(0, 12px);
+  transition: all ease-in 0.24s;
+
+  &.is-active {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.icon {
+  opacity: 0.32;
+}
+
+.btn {
+  &:hover {
+    .icon {
+      opacity: 1;
+    }
+  }
+}

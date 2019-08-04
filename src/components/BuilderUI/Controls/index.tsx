@@ -1,33 +1,63 @@
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useState, useEffect, createRef } from "react";
 import BuilderContext from "../../../context/BuilderContext";
 import Button from "../Button";
+import { TweenMax } from "gsap";
+import "./Controls.scss";
+
+import { ReactComponent as ImageIcon } from "../../../assets/icon-add-image.svg";
+import { ReactComponent as TextIcon } from "../../../assets/icon-add-text.svg";
 
 const Controls: FC<{}> = props => {
   const context = useContext(BuilderContext);
+  const [state, setState] = useState(false);
+
+  const menu = createRef<HTMLDivElement>();
+
+  useEffect(() => {
+    if (menu.current) {
+      TweenMax.to(menu.current, 0, { y: 24, opacity: 0 });
+      TweenMax.to(menu.current, 0.32, { y: 0, opacity: 1 });
+    }
+  }, []);
+
   return (
-    <div className="builder-ui-controls">
-      <Button
-        onClick={() =>
-          context.dispatch({
-            type: "ADD_TEXT",
-            payload: "Type here..."
-          })
-        }
+    <div className="builder-ui-controls" ref={menu}>
+      <div
+        onClick={() => {
+          setState(!state);
+        }}
+        className={`menu-icon hamburger hamburger--spin ${
+          state ? "is-active" : ""
+        }`}
       >
-        Add Text
-      </Button>
-      <Button
-        onClick={() =>
-          context.dispatch({
-            type: "OPEN_MODAL",
-            payload: {
-              type: "Image"
-            }
-          })
-        }
-      >
-        Add Image
-      </Button>
+        <div className="hamburger-box">
+          <div className="hamburger-inner" />
+        </div>
+      </div>
+      <div className={`controls-tooltip ${state ? "is-active" : ""}`}>
+        <Button
+          onClick={() =>
+            context.dispatch({
+              type: "ADD_TEXT",
+              payload: "Type here..."
+            })
+          }
+        >
+          <TextIcon className="icon" />
+        </Button>
+        <Button
+          onClick={() =>
+            context.dispatch({
+              type: "OPEN_MODAL",
+              payload: {
+                type: "Image"
+              }
+            })
+          }
+        >
+          <ImageIcon className="icon" />
+        </Button>
+      </div>
     </div>
   );
 };
