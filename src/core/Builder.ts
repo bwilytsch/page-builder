@@ -1,17 +1,19 @@
 import Page from "./Page";
-import Text from "../core/primitives/Text";
+import PBText from "../core/primitives/Text";
+import PBImage from "../core/primitives/Image";
 
-interface Pages {
-  collection: { [key: string]: Page };
+enum Viewports {
+  desktop = 0,
+  tablet = 1,
+  mobile = 2
 }
 
-export const Context: Pages = {
-  collection: {
-    startPage: new Page("Hello World")
-  }
-};
+interface IBuilder {
+  collection: { [key: string]: Page };
+  viewport: Viewports;
+}
 
-// Load a defaultPage
+// Default Page
 let currentPage: Page = new Page("Hello World");
 
 const getCurrentPage = (): Page => {
@@ -24,12 +26,19 @@ const setCurrentPage = (page: Page) => {
 
 const createPage = (page?: Page): void => {};
 const duplicatePage = (page: Page): void => {};
-const loadPage = (page: Page): void => {
+const loadPage = (page: Page): Promise<Page> => {
   setCurrentPage(page);
+
+  return new Promise((resolve, reject) => {
+    // Fake delay
+    setTimeout(() => {
+      resolve(currentPage);
+    }, 1000);
+  });
 };
 const addText = (): void => {
   // Add text
-  const text = new Text("Text");
+  const text = new PBText("Text");
   currentPage.content.push(text);
 };
 
@@ -39,6 +48,8 @@ const removeText = (): void => {
 
 const addImage = (): void => {
   // Add Image
+  const image = new PBImage("Image");
+  currentPage.content.push(image);
 };
 
 const removeImage = (): void => {

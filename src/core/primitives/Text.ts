@@ -1,10 +1,8 @@
-export default class Text {
-  public content: string;
-  public name: string;
-  public type: string;
-  constructor(text: string) {
-    this.content = text;
-    this.name = "Text";
-    this.type = "Text";
+import { fallbackProperty } from "../Utils";
+import Content from "../Content";
+
+export default class Text extends Content {
+  constructor(text: string, name?: string) {
+    super(text, fallbackProperty(name, "Text"), "Text");
   }
 }
