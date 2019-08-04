@@ -1,7 +1,6 @@
 import Page from "../core/Page";
 
-// First Example Page as date model
-
+// First Example Page describing the date model
 const startPage = new Page("startPage");
 
 const placeholderText =
@@ -21,5 +20,8 @@ startPage
     payload:
       "https://img.fnatic.io/prod%2Fuploads%2Ffff361de-3b9f-4c9a-99da-a1b83f7d252c%2F48382008616_7c994af8cb_k.jpg?w=1600&fit=crop&q=75&s=39b72ef1b338988537ff90a72cadaab4"
   });
+
+// Logging server data strucutre
+console.log(startPage);
 
 export default startPage;

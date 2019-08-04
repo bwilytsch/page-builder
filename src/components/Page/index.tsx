@@ -2,8 +2,8 @@ import React, { FunctionComponent } from "react";
 import { ContentTypes, IPage } from "../../core/Page";
 
 // Content Components
-import Image from "../Image";
-import Text from "../Text";
+import Image from "../Primitives/Image";
+import Text from "../Primitives/Text";
 
 type ContentComponents = Image | Text;
 

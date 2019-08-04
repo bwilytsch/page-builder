@@ -1,8 +1,11 @@
-import Builder from "./Builder";
-import AddTextCommand from "./commands/AddTextCommand";
-import RemoveTextCommand from "./commands/RemoveTextCommand";
+import { AddTextCommand, RemoveTextCommand } from "./commands/TextCommands";
+import { AddImageCommand, RemoveImageCommand } from "./commands/ImageCommands";
 
-export type CommandTypes = AddTextCommand | RemoveTextCommand;
+export type CommandTypes =
+  | AddTextCommand
+  | RemoveTextCommand
+  | AddImageCommand
+  | RemoveImageCommand;
 
 export interface ICommand {
   execute: (...args: any[]) => any;
