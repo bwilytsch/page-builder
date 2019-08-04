@@ -6,7 +6,7 @@ import { AddImageCommand } from "../core/commands/ImageCommands";
 export default function reducer(ctx: IAppContext, action: any): IAppContext {
   switch (action.type) {
     case "ADD_IMAGE":
-      ctx.state.history.execute(new AddImageCommand(Builder));
+      ctx.state.history.execute(new AddImageCommand(Builder, action.payload));
       return {
         ...ctx,
         state: {
@@ -15,7 +15,7 @@ export default function reducer(ctx: IAppContext, action: any): IAppContext {
         }
       };
     case "ADD_TEXT":
-      ctx.state.history.execute(new AddTextCommand(Builder));
+      ctx.state.history.execute(new AddTextCommand(Builder, action.payload));
       return {
         ...ctx,
         state: {
@@ -29,6 +29,28 @@ export default function reducer(ctx: IAppContext, action: any): IAppContext {
         state: {
           ...ctx.state,
           page: Builder.getCurrentPage()
+        }
+      };
+    case "OPEN_MODAL":
+      return {
+        ...ctx,
+        state: {
+          ...ctx.state,
+          modal: {
+            isOpen: true,
+            type: action.payload.type
+          }
+        }
+      };
+    case "CLOSE_MODAL":
+      return {
+        ...ctx,
+        state: {
+          ...ctx.state,
+          modal: {
+            isOpen: false,
+            type: null
+          }
         }
       };
     default:

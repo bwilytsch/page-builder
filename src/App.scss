@@ -1,0 +1,10 @@
+@import "./styles/reset";
+@import "./styles/colors";
+
+html,
+body {
+  background-color: $fnatic-light-grey;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.3em;
+}

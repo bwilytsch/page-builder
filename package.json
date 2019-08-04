@@ -35,6 +35,8 @@
     ]
   },
   "devDependencies": {
+    "gsap": "^2.1.3",
+    "node-sass": "^4.12.0",
     "node-uuid": "^1.4.8"
   }
 }

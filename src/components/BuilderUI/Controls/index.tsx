@@ -1,16 +1,33 @@
 import React, { FC, useContext } from "react";
 import BuilderContext from "../../../context/BuilderContext";
+import Button from "../Button";
 
 const Controls: FC<{}> = props => {
   const context = useContext(BuilderContext);
   return (
-    <div>
-      <button onClick={() => context.dispatch({ type: "ADD_TEXT" })}>
+    <div className="builder-ui-controls">
+      <Button
+        onClick={() =>
+          context.dispatch({
+            type: "ADD_TEXT",
+            payload: "Type here..."
+          })
+        }
+      >
         Add Text
-      </button>
-      <button onClick={() => context.dispatch({ type: "ADD_IMAGE" })}>
+      </Button>
+      <Button
+        onClick={() =>
+          context.dispatch({
+            type: "OPEN_MODAL",
+            payload: {
+              type: "Image"
+            }
+          })
+        }
+      >
         Add Image
-      </button>
+      </Button>
     </div>
   );
 };

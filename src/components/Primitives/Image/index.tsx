@@ -1,5 +1,7 @@
 import React, { PureComponent } from "react";
 
+import "./Image.scss";
+
 interface Props {
   content: string;
 }

@@ -1,0 +1,24 @@
+@import "../../../styles/colors";
+@import "../../../styles/animation";
+
+.btn {
+  outline: none;
+  border: none;
+  padding: 12px 24px;
+  margin: 2px;
+  cursor: pointer;
+  background-color: white;
+
+  &-primary {
+    color: white;
+    background-color: $fnatic-yellow;
+  }
+
+  &:hover {
+    background-color: lighten($fnatic-yellow, 5%);
+  }
+
+  &:active {
+    background-color: darker($fnatic-yellow, 5%);
+  }
+}

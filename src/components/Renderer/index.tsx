@@ -7,11 +7,14 @@ import BuilderContext from "../../context/BuilderContext";
 import ExamplePage from "../../pages/ExamplePage";
 import Loader from "../../components/BuilderUI/Loader";
 
+import "./Renderer.scss";
+import Modal from "../BuilderUI/Modal";
+
 const Renderer: React.FunctionComponent = props => {
   const [isLoading, setLoadingState] = useState(true);
   const {
     dispatch,
-    state: { page }
+    state: { page, modal }
   } = useContext(BuilderContext);
 
   useEffect(() => {
@@ -26,7 +29,10 @@ const Renderer: React.FunctionComponent = props => {
       {isLoading ? (
         <Loader />
       ) : page instanceof Page ? (
-        <PageComponent {...page} />
+        <>
+          <PageComponent {...page} />
+          {modal.isOpen ? <Modal /> : null}
+        </>
       ) : null}
     </div>
   );

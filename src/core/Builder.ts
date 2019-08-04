@@ -1,6 +1,7 @@
 import Page from "./Page";
 import PBText from "../core/primitives/Text";
 import PBImage from "../core/primitives/Image";
+import { fallbackProperty } from "./Utils";
 
 enum Viewports {
   desktop = 0,
@@ -36,9 +37,9 @@ const loadPage = (page: Page): Promise<Page> => {
     }, 1000);
   });
 };
-const addText = (): void => {
+const addText = (txt?: string): void => {
   // Add text
-  const text = new PBText("Text");
+  const text = new PBText(fallbackProperty(txt, "Text"));
   currentPage.content.push(text);
 };
 
@@ -46,9 +47,9 @@ const removeText = (): void => {
   // Remove text
 };
 
-const addImage = (): void => {
+const addImage = (url?: string): void => {
   // Add Image
-  const image = new PBImage("Image");
+  const image = new PBImage(fallbackProperty(url, ""));
   currentPage.content.push(image);
 };
 

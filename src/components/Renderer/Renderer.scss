@@ -1,0 +1,11 @@
+@import "../../styles/colors";
+
+::selection {
+  background-color: $fnatic-yellow;
+  color: white;
+}
+
+.viewer {
+  width: 100%;
+  margin: 0 auto;
+}

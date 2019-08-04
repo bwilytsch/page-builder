@@ -30,12 +30,7 @@ const Page: FunctionComponent<IPage> = props => {
       return <Comp content={data.content} key={key} />;
     });
 
-  return (
-    <div className="page-container">
-      {props.name}
-      {renderContent(props.content)}
-    </div>
-  );
+  return <div className="page-container">{renderContent(props.content)}</div>;
 };
 
 export default Page;

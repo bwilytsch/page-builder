@@ -12,12 +12,14 @@ export interface ICommand {
   undo: (...args: any[]) => any;
   builder: any;
   name: string;
+  value: any;
   type: CommandTypes | null;
 }
 
 export default abstract class Command implements ICommand {
   public builder: any;
   public name: string;
+  public value: any;
   public type: CommandTypes | null;
 
   constructor(builder: any, name: string) {

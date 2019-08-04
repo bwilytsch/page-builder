@@ -1,12 +1,13 @@
 import Command from "../Command";
 
 export class AddImageCommand extends Command {
-  constructor(builder: any, name?: string) {
+  constructor(builder: any, value: string, name?: string) {
     super(builder, name === undefined ? "Add Image" : name);
+    this.value = value;
     this.type = this;
   }
   public execute = (): void => {
-    this.builder.addImage();
+    this.builder.addImage(this.value);
   };
 
   public undo = (): void => {

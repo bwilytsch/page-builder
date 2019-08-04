@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
 
+import "./Text.scss";
+
 export interface Props {
   content?: string;
 }
@@ -15,7 +17,11 @@ const Text: React.FunctionComponent<Props> = props => {
 
   useEffect(() => {}, [props.content]);
 
-  return <ReactQuill value={state} onChange={setState} theme="bubble" />;
+  return (
+    <div className="text-container">
+      <ReactQuill value={state} onChange={setState} theme="bubble" />
+    </div>
+  );
 };
 
 const defaultProps: DefaultProps = {
