@@ -7,17 +7,17 @@ export type CommandTypes = AddTextCommand | RemoveTextCommand;
 export interface ICommand {
   execute: (...args: any[]) => any;
   undo: (...args: any[]) => any;
-  builder: Builder;
+  builder: any;
   name: string;
   type: CommandTypes | null;
 }
 
 export default abstract class Command implements ICommand {
-  public builder: Builder;
+  public builder: any;
   public name: string;
   public type: CommandTypes | null;
 
-  constructor(builder: Builder, name: string) {
+  constructor(builder: any, name: string) {
     this.builder = builder;
     this.name = name;
     this.type = null;

@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.css";
-
-// Commponents
-import Text from "./components/Text";
+import Renderer from "./components/Renderer";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Text />
+      <Renderer />
     </div>
   );
 };

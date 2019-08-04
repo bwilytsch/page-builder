@@ -25,7 +25,7 @@ export interface DefaultProps {
 const Text: React.FunctionComponent<Props> = props => {
   const [state, setState] = useState(props.content);
 
-  return <ReactQuill value={state} onChange={setState} />;
+  return <ReactQuill value={state} onChange={setState} theme="bubble" />;
 };
 
 const defaultProps: DefaultProps = {
