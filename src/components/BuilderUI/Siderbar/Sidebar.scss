@@ -1,0 +1,22 @@
+@import "../../../styles/colors";
+
+.sidebar {
+  box-sizing: border-box;
+  background-color: $fnatic-light-grey;
+  display: block;
+  width: 320px;
+  height: 100%;
+  padding: 12px 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-right: 1px solid darken($fnatic-light-grey, 10%);
+  z-index: 6;
+
+  li {
+    box-sizing: border-box;
+    border-bottom: 1px solid darken($fnatic-light-grey, 10%);
+    padding: 12px 6px;
+    margin: 0 24px;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, createRef } from "react";
+import React from "react";
 import { ReactComponent as Logo } from "../../../assets/logo.svg";
 
 import "./Loader.scss";

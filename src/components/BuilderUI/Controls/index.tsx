@@ -7,7 +7,7 @@ import "./Controls.scss";
 import { ReactComponent as ImageIcon } from "../../../assets/icon-add-image.svg";
 import { ReactComponent as TextIcon } from "../../../assets/icon-add-text.svg";
 
-const Controls: FC<{}> = props => {
+const Controls: FC = props => {
   const context = useContext(BuilderContext);
   const [state, setState] = useState(false);
 
@@ -21,39 +21,36 @@ const Controls: FC<{}> = props => {
   }, []);
 
   return (
-    <div className="builder-ui-controls" ref={menu}>
-      <div
-        onClick={() => {
-          setState(!state);
-        }}
-        className={`menu-icon hamburger hamburger--spin ${
-          state ? "is-active" : ""
-        }`}
-      >
-        <div className="hamburger-box">
-          <div className="hamburger-inner" />
-        </div>
-      </div>
-      <div className={`controls-tooltip ${state ? "is-active" : ""}`}>
+    <div
+      className={`builder-ui-controls ${state ? "is-active" : ""}`}
+      ref={menu}
+      onClick={() => {
+        setState(!state);
+      }}
+    >
+      <div className="menu-icon" />
+      <div className="controls-tooltip">
         <Button
-          onClick={() =>
+          onClick={() => {
+            setState(!state);
             context.dispatch({
               type: "ADD_TEXT",
               payload: "Type here..."
-            })
-          }
+            });
+          }}
         >
           <TextIcon className="icon" />
         </Button>
         <Button
-          onClick={() =>
+          onClick={() => {
+            setState(!state);
             context.dispatch({
               type: "OPEN_MODAL",
               payload: {
                 type: "Image"
               }
-            })
-          }
+            });
+          }}
         >
           <ImageIcon className="icon" />
         </Button>

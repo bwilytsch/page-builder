@@ -19,7 +19,7 @@
 }
 
 .logo {
-  animation: float 2s 0s infinite;
+  animation: float 4s 0s infinite;
 }
 
 .loading-bar-outer {
@@ -49,7 +49,7 @@
     transform: translatey(0px);
   }
   50% {
-    transform: translatey(-12px);
+    transform: translatey(-6px);
   }
   100% {
     transform: translatey(0px);

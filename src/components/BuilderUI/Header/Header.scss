@@ -1,33 +1,37 @@
 @import "../../../styles/colors";
 @import "../../../styles/animation";
 
-$size: 64px;
+$size: 48px;
 
-.header-hitbox {
-  width: 100%;
+.header {
+  width: $size;
   height: $size;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 12;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 48;
+  background-color: $fnatic-light-grey;
 
-  &:hover {
-    header {
-      opacity: 1;
-      transform: translate(0, 0);
+  .hamburger {
+    &-box {
+      padding: 12px;
     }
-  }
 
-  header {
-    text-align: center;
-    color: white;
-    width: 100%;
-    height: $size;
-    line-height: $size;
-    background-color: $fnatic-dark;
-    border-bottom: 4px solid $fnatic-yellow;
-    transform: translate(0, -24px);
-    opacity: 0;
-    transition: all ease-in-out $animation-duration;
+    &-inner {
+      width: 24px;
+      height: 2px;
+
+      &::before {
+        width: 24px;
+        height: 2px;
+        top: -6px;
+      }
+
+      &::after {
+        width: 24px;
+        height: 2px;
+        bottom: -6px;
+      }
+    }
   }
 }

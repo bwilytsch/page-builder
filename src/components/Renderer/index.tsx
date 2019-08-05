@@ -4,7 +4,6 @@ import Page from "../../core/Page";
 import Builder from "../../core/Builder";
 import BuilderContext from "../../context/BuilderContext";
 
-// import ExamplePage from "../../pages/ExamplePage";
 import BlankPage from "../../pages/BlankPage";
 import Loader from "../../components/BuilderUI/Loader";
 
@@ -12,6 +11,7 @@ import "./Renderer.scss";
 import Modal from "../BuilderUI/Modal";
 import Controls from "../BuilderUI/Controls";
 import { TweenMax } from "gsap";
+import Placeholder from "../BuilderUI/Placeholder";
 
 const Renderer: React.FunctionComponent = props => {
   const [isLoading, setLoadingState] = useState(true);
@@ -38,7 +38,11 @@ const Renderer: React.FunctionComponent = props => {
         <Loader />
       ) : page instanceof Page ? (
         <>
-          <PageComponent {...page} />
+          {page.content.length === 0 ? (
+            <Placeholder>Add content by pressing "+" below.</Placeholder>
+          ) : (
+            <PageComponent {...page} />
+          )}
           <Controls />
           {modal.isOpen ? <Modal /> : null}
         </>
